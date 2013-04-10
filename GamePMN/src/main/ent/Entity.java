@@ -1,21 +1,30 @@
 package main.ent;
 
 import static org.lwjgl.opengl.GL11.*;
+import org.lwjgl.input.*;
+import org.lwjgl.opengl.Display;
 
 public class Entity {
 	
 	int x;
 	int y;
-	//double z;
 	int dx = 0;
 	int dy = 0;
-	//float dz = 0;
 	long rot;
 	long f;
 	int maxHealth;
 	int health;
+	
 	int length;// along y axis
 	int width;// along x axis
+	int topLeftCornerx;
+	int topLeftCornery;
+	int topRightCornerx;
+	int topRightCornery;
+	int bottomRightCornerx;
+	int bottomRightCornery;
+	int bottomLeftCornerx;
+	int bottomLeftCornery;
 	
 	public Entity() {
 		
@@ -50,7 +59,7 @@ public class Entity {
 	int getX() {
 		return this.x;
 	}
-	int getY() {	
+	int getY() {
 		return this.y;
 	}
 	public void setX(int defX) {
@@ -70,6 +79,13 @@ public class Entity {
 	}
 	void setHealth(int defHealth) {
 		this.health = defHealth;
+	}
+	void calculateCornerPositions() {
+		//this.topLeftCorner = 0;
+		int opp = (int)Math.sqrt((int)Math.pow(2, Mouse.getX() - this.getX()) + (int)Math.pow(2,  Mouse.getY() - this.getY()));
+		int adj = this.width / 2;
+		int hyp = (int)Math.tan(opp/adj);
+		Display.setTitle(opp + " " + adj + " " + hyp);
 	}
 
 }

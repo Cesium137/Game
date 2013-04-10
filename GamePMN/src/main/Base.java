@@ -46,7 +46,7 @@ public class Base {
 		while(!Display.isCloseRequested()) {
 			sysNano = System.nanoTime();
 			
-			Display.setTitle("x= " + Mouse.getX() + " y=" + Mouse.getY());
+			//Display.setTitle("x= " + Mouse.getX() + " y=" + Mouse.getY());
 			
 			GL11.glColor3f(1.0f, 0.5f, 0.0f);
 			glBegin(GL_QUADS);
