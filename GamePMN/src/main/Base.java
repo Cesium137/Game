@@ -65,6 +65,7 @@ public class Base {
 
 		    GL11.glPopMatrix();
 		    Display.update();
+		    Display.sync(fps);
 		      
 		}
 		Display.destroy();
