@@ -13,7 +13,7 @@ public class Base {
 
 	public static void main(String[] args) {
 		
-		Display.setTitle("This is a game.");
+		Display.setTitle("Taco Bro.");
 		
 		try {
 			Display.create();
