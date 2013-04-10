@@ -10,8 +10,6 @@ public class Entity {
 	int dx = 0;
 	int dy = 0;
 	//float dz = 0;
-	int rootNodex;
-	int rootNodey;
 	long rot;
 	long f;
 	int maxHealth;
@@ -26,13 +24,6 @@ public class Entity {
 	}
 	
 	void draw() {
-		//Some render code here
-		/*glBegin(GL_QUADS);
-			glVertex2i(this.x, this.y);//top left corner
-			glVertex2i(this.x + this.width, this.y);//top right corner
-			glVertex2i(this.x + this.width, this.y + this.height);//bottom right
-			glVertex2i(this.x, this.y + this.height);//bottom left
-		glEnd();*/
 		glBegin(GL_QUADS);
 		glVertex3f(100f, 100f, 0.5f);//top left
 		glVertex3f(150f, 100f, 0.5f);//top right

@@ -8,8 +8,8 @@ public class Char extends Entity {
 
 	public Char() {
 		
-		this.width = 64;
-		this.length = 64;
+		this.width = 32;
+		this.length = 32;
 		
 		
 	}
