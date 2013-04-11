@@ -1,6 +1,8 @@
 package main;
 
 import main.ent.Char;
+import main.texhandler.BaseTextureLoader;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
@@ -15,6 +17,7 @@ public class Base {
 	public static long sysNano = System.nanoTime();
 	private static int fps = 60;
 	public static Char p = new Char();
+	public static boolean exitOnNextCycle = false;
 
 	public static void main(String[] args) {
 		
@@ -41,12 +44,13 @@ public class Base {
         GL11.glPushMatrix();
         GL11.glLoadIdentity();
         
+        BaseTextureLoader.load();
+        
 		p.setX(640);
 		p.setY(360);
-		while(!Display.isCloseRequested()) {
+		while(!Display.isCloseRequested() && !exitOnNextCycle) {
 			sysNano = System.nanoTime();
 			
-			//Display.setTitle("x= " + Mouse.getX() + " y=" + Mouse.getY());
 			glClear(GL_COLOR_BUFFER_BIT);
 			
 			GL11.glColor3f(1.0f, 0.5f, 0.0f);
