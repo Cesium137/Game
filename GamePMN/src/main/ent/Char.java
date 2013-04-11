@@ -20,6 +20,14 @@ public class Char extends Entity {
 	}
 	
 	void draw() {
+		glPushMatrix();
+		GL11.glColor3f(1.0f,  0.0f,  0.0f);
+		glBegin(GL_LINES);
+			glVertex2f(Mouse.getX(), Mouse.getY());
+			glVertex2f(this.getX(), this.getY());
+		glEnd();
+		glPopMatrix();
+		
 		GL11.glColor3f(1.0f, 0.5f, 0.0f);
 		glPushMatrix();
 		glLoadIdentity();
@@ -35,15 +43,7 @@ public class Char extends Entity {
 			glVertex2f(nodeOffsetX, -nodeOffsetY);
 			glVertex2f(-nodeOffsetX, -nodeOffsetY);
 		glEnd();
-		/*glRotatef(0, 0, 0, 1);
-		glTranslatef(-this.x, -this.y, 0);
-		GL11.glColor3f(1.0f,  0.0f,  0.0f);
-		glBegin(GL_LINES);
-			glVertex2f(this.getX(), this.getY());
-			glVertex2f(Mouse.getX(), Mouse.getY());
-			glEnd();*/
 		glPopMatrix();
-			
 	}
 	
 	public void update() {
