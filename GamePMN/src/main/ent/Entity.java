@@ -6,25 +6,19 @@ import org.lwjgl.opengl.Display;
 
 public class Entity {
 	
-	int x;
-	int y;
-	int dx = 0;
-	int dy = 0;
-	long rot;
+	float x;
+	float y;
+	float dx = 0;
+	float dy = 0;
+	double rot;
 	long f;
 	int maxHealth;
 	int health;
 	
 	int length;// along y axis
 	int width;// along x axis
-	int topLeftCornerx;
-	int topLeftCornery;
-	int topRightCornerx;
-	int topRightCornery;
-	int bottomRightCornerx;
-	int bottomRightCornery;
-	int bottomLeftCornerx;
-	int bottomLeftCornery;
+	
+	float speedMultiplier;
 	
 	public Entity() {
 		
@@ -47,6 +41,11 @@ public class Entity {
 		//Some update code
 	}
 	
+	void move(float xSpeed, float ySpeed) {
+		this.x += (xSpeed * this.speedMultiplier);
+		this.y += (ySpeed * this.speedMultiplier);
+	}
+	
 	int getMaxHealth() {
 		return this.health;
 	}
@@ -56,17 +55,23 @@ public class Entity {
 	long getF() {
 		return this.f;
 	}
-	int getX() {
+	float getX() {
 		return this.x;
 	}
-	int getY() {
+	float getY() {
 		return this.y;
 	}
-	public void setX(int defX) {
+	public void setX(float defX) {
 		this.x = defX;
 	}
-	public void setY(int defY) {
+	public void setY(float defY) {
 		this.y = defY;
+	}
+	double getRot() {
+		return this.rot;
+	}
+	void setRot(double defRot) {
+		this.rot = defRot;
 	}
 	void setF(long defF) {
 		this.f = defF;

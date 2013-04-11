@@ -36,7 +36,7 @@ public class Base {
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glDisable(GL11.GL_LIGHTING);
-        GL11.glOrtho(0, 1280, 720, 0, 1, -1);
+        GL11.glOrtho(0, 1280, 0, 720, 1, -1);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glPushMatrix();
         GL11.glLoadIdentity();
@@ -47,6 +47,7 @@ public class Base {
 			sysNano = System.nanoTime();
 			
 			//Display.setTitle("x= " + Mouse.getX() + " y=" + Mouse.getY());
+			glClear(GL_COLOR_BUFFER_BIT);
 			
 			GL11.glColor3f(1.0f, 0.5f, 0.0f);
 			glBegin(GL_QUADS);
