@@ -3,20 +3,26 @@ package main.ent;
 import static org.lwjgl.opengl.GL11.*;
 import main.texhandler.BaseTextureLoader;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 
 public class Char extends Entity {
+	
+	public float translateX;
+	public float translateY;
 
 	public Char() {
 		
 		this.width = 32;
 		this.length = 32;
-		this.x = 640;
-		this.y = 360;
+		this.x = 0;
+		this.y = 0;
+		this.translateX = 640;
+		this.translateY = 320;
 		this.maxHealth = 100;
 		
+		this.speedMultiplier = 2.2f;
 	}
 	
 	void draw() {
@@ -33,9 +39,8 @@ public class Char extends Entity {
 		glPushMatrix();
 		glLoadIdentity();
 		glTranslatef(this.x, this.y, 0);
-		this.setRot(57.2957795f * Math.atan2((double)this.getY() - Mouse.getY(), (double)this.getX() - Mouse.getX()));
-		Display.setTitle(String.format("%f", this.rot));
-		glRotatef((float)this.getRot(), 0, 0, 1);
+		this.setRot(57.2957795f * (float)Math.atan2((double)this.getY() - Mouse.getY(), (double)this.getX() - Mouse.getX()));
+		glRotatef(this.getRot(), 0, 0, 1);
 		BaseTextureLoader.load();
 		BaseTextureLoader.texture.bind();
 		glBegin(GL_QUADS);
@@ -56,6 +61,31 @@ public class Char extends Entity {
 	
 	public void update() {
 		this.draw();
+		this.updateControls();
+		//this.move(this.dx,  this.dy);
+		this.translateX += this.dx;
+		this.translateY += this.dy;
+		this.updateTranslate();
+		
+	}
+	void updateControls() {
+		if(Keyboard.isKeyDown(Keyboard.KEY_W)) {
+			this.dy = this.speedMultiplier;
+			//this.dy = 
+		}
+		else if(Keyboard.isKeyDown(Keyboard.KEY_S)){ 
+			this.dy = -this.speedMultiplier;
+		}else{this.dy = 0;}
+		if(Keyboard.isKeyDown(Keyboard.KEY_A)){ 
+			this.dx = -this.speedMultiplier;
+		}
+		else if(Keyboard.isKeyDown(Keyboard.KEY_D)){ 
+			this.dx = this.speedMultiplier;
+		}else{this.dx = 0;}
+		
+	}
+	private void updateTranslate() {
+		
 	}
 	
 

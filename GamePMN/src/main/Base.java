@@ -2,6 +2,10 @@ package main;
 
 import main.ent.Char;
 import main.texhandler.BaseTextureLoader;
+import main.tile.Tile;
+import main.ui.DisplayIndex;
+import main.ui.MenuMain;
+import main.ui.Rect;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Mouse;
@@ -17,6 +21,7 @@ public class Base {
 	public static long sysNano = System.nanoTime();
 	private static int fps = 60;
 	public static Char p = new Char();
+	static Tile tile = new Tile(0, 0);
 	public static boolean exitOnNextCycle = false;
 
 	public static void main(String[] args) {
@@ -48,20 +53,15 @@ public class Base {
         
 		p.setX(640);
 		p.setY(360);
+		
 		while(!Display.isCloseRequested() && !exitOnNextCycle) {
-			sysNano = System.nanoTime();
 			
+			sysNano = System.nanoTime();
+			Display.setTitle(Mouse.getX() + " " + Mouse.getY());
 			glClear(GL_COLOR_BUFFER_BIT);
 			
-			GL11.glColor3f(1.0f, 0.5f, 0.0f);
-			glBegin(GL_QUADS);
-			glVertex3f(0f, 10f, 0.5f);//top left
-			glVertex3f(10f, 10f, 0.5f);//top right
-			glVertex3f(10f, 0f, 0.5f);//bottom right
-			glVertex3f(0f, 0f, 0.5f);//bottom left
-			glEnd();
+			BaseRenderer.render();
 			
-			p.update();
 			GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		    GL11.glLoadIdentity();
 
@@ -70,12 +70,15 @@ public class Base {
 
 		    GL11.glPopMatrix();
 		    Display.update();
-		    Display.sync(fps);
+		    //Display.sync(fps);
 		      
 		}
 		Display.destroy();
 		System.exit(0);
 		
+	}
+	public static void updatePos() {
+		glTranslatef(-p.translateX, -p.translateY, 0);
 	}
 	
 }

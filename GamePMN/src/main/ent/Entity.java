@@ -1,6 +1,7 @@
 package main.ent;
 
 import static org.lwjgl.opengl.GL11.*;
+
 import org.lwjgl.input.*;
 import org.lwjgl.opengl.Display;
 
@@ -10,7 +11,7 @@ public class Entity {
 	float y;
 	float dx = 0;
 	float dy = 0;
-	double rot;
+	float rot;
 	long f;
 	int maxHealth;
 	int health;
@@ -38,12 +39,16 @@ public class Entity {
 	public void update() {
 		this.draw();
 		
-		//Some update code
 	}
 	
 	void move(float xSpeed, float ySpeed) {
+		glPushMatrix();
+		glLoadIdentity();
+		glTranslatef(this.getX(), this.getY(), 0);
+		glRotatef(this.getRot(), 0, 0, 1);
 		this.x += (xSpeed * this.speedMultiplier);
 		this.y += (ySpeed * this.speedMultiplier);
+		glPopMatrix();
 	}
 	
 	int getMaxHealth() {
@@ -55,10 +60,10 @@ public class Entity {
 	long getF() {
 		return this.f;
 	}
-	float getX() {
+	public float getX() {
 		return this.x;
 	}
-	float getY() {
+	public float getY() {
 		return this.y;
 	}
 	public void setX(float defX) {
@@ -67,10 +72,10 @@ public class Entity {
 	public void setY(float defY) {
 		this.y = defY;
 	}
-	double getRot() {
+	float getRot() {
 		return this.rot;
 	}
-	void setRot(double defRot) {
+	void setRot(float defRot) {
 		this.rot = defRot;
 	}
 	void setF(long defF) {
@@ -84,13 +89,6 @@ public class Entity {
 	}
 	void setHealth(int defHealth) {
 		this.health = defHealth;
-	}
-	void calculateCornerPositions() {
-		//this.topLeftCorner = 0;
-		int opp = (int)Math.sqrt((int)Math.pow(2, Mouse.getX() - this.getX()) + (int)Math.pow(2,  Mouse.getY() - this.getY()));
-		int adj = this.width / 2;
-		int hyp = (int)Math.tan(opp/adj);
-		Display.setTitle(opp + " " + adj + " " + hyp);
 	}
 
 }
