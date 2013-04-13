@@ -6,6 +6,9 @@ import main.texhandler.BaseTextureLoader;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.util.glu.GLU;
+
+import static org.lwjgl.util.glu.Util.*;
 
 public class Char extends Entity {
 	
@@ -62,10 +65,11 @@ public class Char extends Entity {
 	public void update() {
 		this.draw();
 		this.updateControls();
-		//this.move(this.dx,  this.dy);
+		this.move(this.dx,  this.dy);
 		this.translateX += this.dx;
 		this.translateY += this.dy;
 		this.updateTranslate();
+		GLU.gluLookAt(this.getX(), this.getY(), 0f, this.getX(), this.getY(), 0f, this.getX(), this.getY(), 0f);
 		
 	}
 	void updateControls() {

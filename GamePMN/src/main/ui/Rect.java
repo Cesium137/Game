@@ -32,7 +32,7 @@ public class Rect {
 		offsetY = this.length / 2;
 		glPushMatrix();
 		glLoadIdentity();
-		Base.updatePos();
+		//Base.updatePos();
 		glBegin(GL_QUADS);
 			glVertex2f(this.x - offsetX, this.y + offsetY);
 			glVertex2f(this.x + offsetX, this.y + offsetY);

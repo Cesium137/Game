@@ -1,7 +1,7 @@
 package main;
 
 import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.GL11;
+import static org.lwjgl.opengl.GL11.*;
 
 import main.ui.DisplayIndex;
 import main.ui.MenuMain;
@@ -30,6 +30,7 @@ public class BaseRenderer {
 	
 	private static void renderMainGame() {
 		//GL11.glOrtho(0, 1280, 0, 720, 1, -1);
+		glEnable(GL_BLEND);
 		
 		Base.tile.update();
 		Rect r1 = new Rect(500f, 195f, 40f, 40f, 0, 0, 0, 0);

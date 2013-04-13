@@ -6,6 +6,7 @@ import main.tile.Tile;
 import main.ui.DisplayIndex;
 import main.ui.MenuMain;
 import main.ui.Rect;
+import main.ui.TTypeF;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Mouse;
@@ -62,6 +63,10 @@ public class Base {
 			
 			BaseRenderer.render();
 			
+			long done = System.nanoTime();
+			long d = done - sysNano;
+			//TTypeF.drawString(32, 700, String.format("%d",  1000000000 / d) + " fps", new org.newdawn.slick.Color(1.0f, 1.0f, 0.0f));
+			
 			GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		    GL11.glLoadIdentity();
 
@@ -70,7 +75,7 @@ public class Base {
 
 		    GL11.glPopMatrix();
 		    Display.update();
-		    //Display.sync(fps);
+		    Display.sync(fps);
 		      
 		}
 		Display.destroy();

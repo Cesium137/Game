@@ -34,7 +34,7 @@ public class RectUI {
 		this.x = defX;
 		this.y = defY;
 		this.width = defWidth;
-		this.length = defWidth;
+		this.length = defLength;
 		this.rot = defRot;
 		this.r1 = defR1;
 		this.g1 = defG1;
@@ -62,8 +62,10 @@ public class RectUI {
 			GL11.glColor3f(this.r1, this.g1, this.b1);
 		}
 		glBegin(GL_QUADS);
+			GL11.glColor3f(r1, g1, b1);
 			glVertex2f(this.x - offsetX, this.y + offsetY);
 			glVertex2f(this.x + offsetX, this.y + offsetY);
+			GL11.glColor3f(r2,  g2,  b2);
 			glVertex2f(this.x + offsetX, this.y - offsetY);
 			glVertex2f(this.x - offsetX, this.y - offsetY);
 		glEnd();
