@@ -3,10 +3,8 @@ package main;
 import main.ent.Char;
 import main.texhandler.BaseTextureLoader;
 import main.tile.Tile;
-import main.ui.DisplayIndex;
-import main.ui.MenuMain;
-import main.ui.Rect;
 import main.ui.TTypeF;
+import main.ui.TestRender1;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Mouse;
@@ -16,6 +14,7 @@ import org.lwjgl.opengl.GL11;
 import static org.lwjgl.opengl.GL11.*;
 
 import org.lwjgl.opengl.*;
+import org.newdawn.slick.Graphics;
 
 public class Base {
 	
@@ -24,9 +23,9 @@ public class Base {
 	public static Char p = new Char();
 	static Tile tile = new Tile(0, 0);
 	public static boolean exitOnNextCycle = false;
+	static Graphics g = new Graphics();
 
 	public static void main(String[] args) {
-		
 		Display.setTitle("This is a game.");
 		
 		try {
@@ -54,11 +53,13 @@ public class Base {
         
 		p.setX(640);
 		p.setY(360);
-		
+		//g.setFont(new org,newdawn.slick.Font("Times New Roman", java.awt.Font.PLAIN, 12));
+		//g.setFont(TTypeF.font);
+		TestRender1.testInit();
 		while(!Display.isCloseRequested() && !exitOnNextCycle) {
 			
 			sysNano = System.nanoTime();
-			Display.setTitle(Mouse.getX() + " " + Mouse.getY());
+			//Display.setTitle(Mouse.getX() + " " + Mouse.getY());
 			glClear(GL_COLOR_BUFFER_BIT);
 			
 			BaseRenderer.render();

@@ -65,7 +65,7 @@ public class Char extends Entity {
 	public void update() {
 		this.draw();
 		this.updateControls();
-		this.move(this.dx,  this.dy);
+		//this.move(this.dx,  this.dy);
 		this.translateX += this.dx;
 		this.translateY += this.dy;
 		this.updateTranslate();
